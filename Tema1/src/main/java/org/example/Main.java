@@ -12,7 +12,7 @@ public class Main {
         State s=problem.initialize(Arrays.asList(8,0,6,5,4,7,2,3,1));
 //        s.printVecini();
         problem.possibleTransitions(s);
-
+        // ai caramba
 
     }
 }
