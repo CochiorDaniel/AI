@@ -166,14 +166,40 @@ public class Problem {
         return true;
     }
 
-//    public State depthLimitedDFS(State s, int depth, List<State> visited ){
-//        if (isFinal(s))
-//            return s;
-//        if(depth == 0)
-//            return null;
-//        visited.add(s);
-//
-//    }
+    public State IDDFS(State initS, int maxDepth){
+        State sol = null;
+        for(int i=0; i<=maxDepth; i++){
+            List<State> visited = new ArrayList<>();
+            sol = depthLimitedDFS(initS,i,visited);
+            if(sol != null) {
+                //System.out.println(sol);
+                System.out.println(i);
+                return sol;
+            }
+        }
+        return null;
+    }
+
+    public State depthLimitedDFS(State s, int depth, List<State> visited ){
+        if (isFinal(s))
+            return s;
+        if(depth == 0)
+            return null;
+        //System.out.println(s);
+        visited.add(s);
+        State res = null;
+        List<State> neighbors = possibleTransitions(s);
+        for(State n : neighbors){
+            if(!visited.contains(n)){
+                res = depthLimitedDFS(n,depth-1,visited);
+                if(res != null) {
+                    //System.out.println(res);
+                    return res;
+                }
+            }
+        }
+        return null;
+    }
 
     public List<State> possibleTransitions(State s){
         List<State> list = new ArrayList<>();
@@ -189,12 +215,10 @@ public class Problem {
                     list.add(transition(s,p,"left"));
                 if(validateTransition(s,p,"right"))
                     list.add(transition(s,p,"right"));
-
-                //System.out.println(list);
             }
 
         }
-        System.out.println(list);
+//        System.out.println(list);
         return list;
 
     }
