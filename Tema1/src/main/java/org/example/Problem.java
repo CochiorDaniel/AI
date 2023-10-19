@@ -2,30 +2,28 @@ package org.example;
 
 import org.javatuples.Pair;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class Problem {
-
+    private Map<State, State> parinte = new HashMap<>();
 
     public Problem(){}
-
+    public void addParinte(State s, State p)
+    {
+        parinte.put(s,p);
+    }
     public boolean isFinal(State state){
-      System.out.println(Arrays.deepToString(state.getMatrix()));
+        List<Integer> l = new ArrayList<>();
         for(int i = 0; i< 3; i++){
             for(int j=0; j<3; j++){
-                if(j!=2) {
-                    if ((state.getMatrix()[i][j] > state.getMatrix()[i][j + 1]) && state.getMatrix()[i][j] != 0 && state.getMatrix()[i][j + 1] != 0) {
-                        return false;
-                    }
-                }
-                if(i!=2) {
-                    if (state.getMatrix()[i][j] > state.getMatrix()[i + 1][0] && state.getMatrix()[i][j] != 0 && state.getMatrix()[i + 1][j] != 0) {
-                        return false;
-                    }
-                }
+                if(state.getMatrix()[i][j] != 0)
+                    l.add(state.getMatrix()[i][j]);
             }
+        }
+
+        for(int i=0; i<l.size()-1; i++){
+            if(l.get(i) > l.get(i+1))
+                return false;
         }
         return true;
     }
@@ -165,15 +163,29 @@ public class Problem {
         }
         return true;
     }
-
+    public List<State> drum(State state_final)
+    {
+        List<State> drum = new ArrayList<>();
+        State s = state_final;
+        while(s != null)
+        {
+            drum.add(s);
+            s = parinte.get(s);
+        }
+        Collections.reverse(drum);
+        return drum;
+    }
     public State IDDFS(State initS, int maxDepth){
         State sol = null;
         for(int i=0; i<=maxDepth; i++){
-            List<State> visited = new ArrayList<>();
+            List<State> visited = new ArrayList<>(); // lista noua
             sol = depthLimitedDFS(initS,i,visited);
             if(sol != null) {
                 //System.out.println(sol);
-                System.out.println(i);
+                System.out.println("Solutie gasita la adancimea " + i);
+                //System.out.println(drum(sol).size());
+                System.out.println(drum(sol));
+                //System.out.println(visited);
                 return sol;
             }
         }
@@ -185,15 +197,14 @@ public class Problem {
             return s;
         if(depth == 0)
             return null;
-        //System.out.println(s);
         visited.add(s);
         State res = null;
         List<State> neighbors = possibleTransitions(s);
         for(State n : neighbors){
+            addParinte(n,s);
             if(!visited.contains(n)){
                 res = depthLimitedDFS(n,depth-1,visited);
                 if(res != null) {
-                    //System.out.println(res);
                     return res;
                 }
             }
@@ -218,7 +229,6 @@ public class Problem {
             }
 
         }
-//        System.out.println(list);
         return list;
 
     }

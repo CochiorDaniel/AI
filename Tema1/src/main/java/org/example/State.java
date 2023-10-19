@@ -2,15 +2,12 @@ package org.example;
 
 import org.javatuples.Pair;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class State {
     private int matrix[][] = new int[3][3];
     private Pair<Integer,Integer> pair;
-    List<Integer>[][] vecini = new ArrayList[3][3];
+    private List<Integer>[][] vecini = new ArrayList[3][3];
 
     public int[][] getMatrix() {
         return matrix;
