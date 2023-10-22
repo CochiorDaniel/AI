@@ -230,7 +230,106 @@ public class Problem {
 
         }
         return list;
+    }
 
+    public int[][] finalMatrix(State s){
+        int[][] matrix = new int[3][3];
+        int k = 1;
+        for(int i=0; i<3; i++){
+            for(int j=0; j<3; j++){
+                if(s.getMatrix()[i][j] != 0) {
+                    matrix[i][j] = k;
+                    k++;
+                }
+            }
+        }
+        return matrix;
+    }
+
+    public State Greedy(State initialState, String heuristic){
+        Comparator<Pair<State,Integer>> comparator = new Comparator<Pair<State,Integer>>() {
+            @Override
+            public int compare(Pair<State,Integer> p1, Pair<State,Integer> p2) {
+                return p1.getValue1() - p2.getValue1();
+            }
+        };
+        Queue<Pair<State,Integer>> pq = new PriorityQueue<>(comparator);
+        int [][] finalM=finalMatrix(initialState);
+        switch (heuristic) {
+            case "Manhattan":
+                Pair<State, Integer> p = new Pair<>(initialState, Manhattan(initialState, finalM));
+                pq.add(p);
+                break;
+            case "Hamming":
+                Pair<State, Integer> p1 = new Pair<>(initialState, Hamming(initialState, finalM));
+                pq.add(p1);
+                break;
+        }
+
+        List<State> visited = new ArrayList<>();
+        visited.add(initialState);
+
+        while(!pq.isEmpty()){
+            State crt = pq.poll().getValue0();
+            if(isFinal(crt))
+                return crt;
+            List<State> neighbors = possibleTransitions(crt);
+            for(State n : neighbors){
+                if(!visited.contains(n)){
+                    switch (heuristic) {
+                        case "Manhattan":
+                            Pair<State, Integer> pair = new Pair<>(n, Manhattan(n, finalM));
+                            pq.add(pair);
+                            break;
+                        case "Hamming":
+                            Pair<State, Integer> pair1 = new Pair<>(n, Hamming(n, finalM));
+                            pq.add(pair1);
+                            break;
+                    }
+                    visited.add(n);
+                }
+            }
+        }
+
+        return null;
+    }
+
+    public int Manhattan(final State s, int[][] finalM){
+        int m = 0;
+        int[][] sM = s.getMatrix();
+
+        for(int i=0; i<3; i++){
+            for(int j=0; j<3; j++){
+                int val = sM[i][j];
+                if(val != 0){
+                    for(int k=0; k<3; k++){
+                        for(int l=0; l<3; l++){
+                            if(val == finalM[k][l]){
+                                m += Math.abs(i-k) + Math.abs(j-l);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return m;
+    }
+
+    public int Hamming(final State s, int[][] finalM){
+        int h = 0;
+        int[][] sM = s.getMatrix();
+
+        for(int i=0; i<3; i++){
+            for(int j=0; j<3; j++){
+                int val = sM[i][j];
+                if(val != 0) {
+                    if (val != finalM[i][j]) {
+                        h += 1;
+                    }
+                }
+                }
+            }
+        return h;
     }
 
 }
