@@ -163,7 +163,7 @@ public class Problem {
         }
         return true;
     }
-    public List<State> drum(State state_final)
+    public Pair<List<State>, Integer> drum(State state_final)
     {
         List<State> drum = new ArrayList<>();
         State s = state_final;
@@ -173,7 +173,9 @@ public class Problem {
             s = parinte.get(s);
         }
         Collections.reverse(drum);
-        return drum;
+        int length = drum.size();
+        Pair<List<State>,Integer> pair = new Pair<>(drum,length);
+        return pair;
     }
     public State IDDFS(State initS, int maxDepth){
         State sol = null;
@@ -264,6 +266,10 @@ public class Problem {
                 Pair<State, Integer> p1 = new Pair<>(initialState, Hamming(initialState, finalM));
                 pq.add(p1);
                 break;
+            case "Chebyshev":
+                Pair<State, Integer> p2 = new Pair<>(initialState, Chebyshev(initialState, finalM));
+                pq.add(p2);
+                break;
         }
 
         List<State> visited = new ArrayList<>();
@@ -271,8 +277,10 @@ public class Problem {
 
         while(!pq.isEmpty()){
             State crt = pq.poll().getValue0();
-            if(isFinal(crt))
+            if(isFinal(crt)) {
+                System.out.println(drum(crt));
                 return crt;
+            }
             List<State> neighbors = possibleTransitions(crt);
             for(State n : neighbors){
                 if(!visited.contains(n)){
@@ -284,6 +292,10 @@ public class Problem {
                         case "Hamming":
                             Pair<State, Integer> pair1 = new Pair<>(n, Hamming(n, finalM));
                             pq.add(pair1);
+                            break;
+                        case "Chebyshev":
+                            Pair<State, Integer> pair2 = new Pair<>(n, Chebyshev(n, finalM));
+                            pq.add(pair2);
                             break;
                     }
                     visited.add(n);
@@ -331,5 +343,29 @@ public class Problem {
             }
         return h;
     }
+
+    public int Chebyshev(final State s, List<int[][]> finalM){
+        int c = 0;
+        int[][] sM = s.getMatrix();
+
+        for ( var fMatrix: finalM) {
+            for (int i = 0; i < 3; i++) {
+                for (int j = 0; j < 3; j++) {
+                    int val = sM[i][j];
+                    if (val != 0) {
+                        for (int k = 0; k < 3; k++) {
+                            for (int l = 0; l < 3; l++) {
+                                if (val == fMatrix[k][l]) {
+                                    c += Math.max(Math.abs(i - k), Math.abs(j - l));
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return c;
+    }
+
 
 }
