@@ -11,7 +11,6 @@ public class Problem {
         Sudoku s = new Sudoku(table, pozPare);
         sudoku = new Sudoku(table, pozPare);
         //System.out.println(restrictii(table, pozPare));
-
         return s;
     }
 
