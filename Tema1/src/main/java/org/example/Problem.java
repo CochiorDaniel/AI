@@ -184,7 +184,6 @@ public class Problem {
             sol = depthLimitedDFS(initS,i,visited);
             if(sol != null) {
                 //System.out.println(sol);
-                System.out.println("Solutie gasita la adancimea " + i);
                 //System.out.println(drum(sol).size());
                 System.out.println(drum(sol));
                 //System.out.println(visited);
@@ -234,18 +233,43 @@ public class Problem {
         return list;
     }
 
-    public int[][] finalMatrix(State s){
-        int[][] matrix = new int[3][3];
-        int k = 1;
-        for(int i=0; i<3; i++){
-            for(int j=0; j<3; j++){
-                if(s.getMatrix()[i][j] != 0) {
-                    matrix[i][j] = k;
-                    k++;
-                }
-            }
-        }
-        return matrix;
+    //pentru matricea finala cu 0 pe aceeasi pozitie
+//    public int[][] finalMatrix(State s){
+//        int[][] matrix = new int[3][3];
+//        int k = 1;
+//        for(int i=0; i<3; i++){
+//            for(int j=0; j<3; j++){
+//                if(s.getMatrix()[i][j] != 0) {
+//                    matrix[i][j] = k;
+//                    k++;
+//                }
+//            }
+//        }
+//        return matrix;
+//    }
+
+    public List<int[][]> stariFinale(){
+        Problem problem=new Problem();
+        State f1 = problem.initialize(Arrays.asList(0, 1, 2, 3, 4, 5, 6, 7, 8));
+        State f2 = problem.initialize(Arrays.asList(1, 0, 2, 3, 4, 5, 6, 7, 8));
+        State f3 = problem.initialize(Arrays.asList(1, 2, 0, 3, 4, 5, 6, 7, 8));
+        State f4 = problem.initialize(Arrays.asList(1, 2, 3, 0, 4, 5, 6, 7, 8));
+        State f5 = problem.initialize(Arrays.asList(1, 2, 3, 4, 0, 5, 6, 7, 8));
+        State f6 = problem.initialize(Arrays.asList(1, 2, 3, 4, 5, 0, 6, 7, 8));
+        State f7 = problem.initialize(Arrays.asList(1, 2, 3, 4, 5, 6, 0, 7, 8));
+        State f8 = problem.initialize(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 0, 8));
+        State f9 = problem.initialize(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 0));
+        List<int[][]> finalStates = new ArrayList<>();
+        finalStates.add(f1.getMatrix());
+        finalStates.add(f2.getMatrix());
+        finalStates.add(f3.getMatrix());
+        finalStates.add(f4.getMatrix());
+        finalStates.add(f5.getMatrix());
+        finalStates.add(f6.getMatrix());
+        finalStates.add(f7.getMatrix());
+        finalStates.add(f8.getMatrix());
+        finalStates.add(f9.getMatrix());
+        return finalStates;
     }
 
     public State Greedy(State initialState, String heuristic){
@@ -256,7 +280,7 @@ public class Problem {
             }
         };
         Queue<Pair<State,Integer>> pq = new PriorityQueue<>(comparator);
-        int [][] finalM=finalMatrix(initialState);
+        List<int [][]> finalM=stariFinale();
         switch (heuristic) {
             case "Manhattan":
                 Pair<State, Integer> p = new Pair<>(initialState, Manhattan(initialState, finalM));
@@ -284,6 +308,7 @@ public class Problem {
             List<State> neighbors = possibleTransitions(crt);
             for(State n : neighbors){
                 if(!visited.contains(n)){
+                    addParinte(n,crt);
                     switch (heuristic) {
                         case "Manhattan":
                             Pair<State, Integer> pair = new Pair<>(n, Manhattan(n, finalM));
@@ -306,18 +331,20 @@ public class Problem {
         return null;
     }
 
-    public int Manhattan(final State s, int[][] finalM){
+    public int Manhattan(final State s, List<int[][]> finalM){
         int m = 0;
         int[][] sM = s.getMatrix();
 
-        for(int i=0; i<3; i++){
-            for(int j=0; j<3; j++){
-                int val = sM[i][j];
-                if(val != 0){
-                    for(int k=0; k<3; k++){
-                        for(int l=0; l<3; l++){
-                            if(val == finalM[k][l]){
-                                m += Math.abs(i-k) + Math.abs(j-l);
+        for ( var fMatrix: finalM){
+            for(int i=0; i<3; i++){
+                for(int j=0; j<3; j++){
+                    int val = sM[i][j];
+                    if(val != 0){
+                        for(int k=0; k<3; k++){
+                            for(int l=0; l<3; l++){
+                                if(val == fMatrix[k][l]){
+                                    m += Math.abs(i-k) + Math.abs(j-l);
+                                }
                             }
                         }
                     }
@@ -327,20 +354,21 @@ public class Problem {
         return m;
     }
 
-    public int Hamming(final State s, int[][] finalM){
+    public int Hamming(final State s, List<int[][]> finalM){
         int h = 0;
         int[][] sM = s.getMatrix();
-
-        for(int i=0; i<3; i++){
-            for(int j=0; j<3; j++){
-                int val = sM[i][j];
-                if(val != 0) {
-                    if (val != finalM[i][j]) {
-                        h += 1;
+        for ( var fMatrix: finalM) {
+            for (int i = 0; i < 3; i++) {
+                for (int j = 0; j < 3; j++) {
+                    int val = sM[i][j];
+                    if (val != 0) {
+                        if (val != fMatrix[i][j]) {
+                            h += 1;
+                        }
                     }
                 }
-                }
             }
+        }
         return h;
     }
 
