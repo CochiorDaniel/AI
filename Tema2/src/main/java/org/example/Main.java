@@ -29,18 +29,12 @@ public class Main {
 
         Problem problem=new Problem();
         Sudoku s = problem.initialize(instTable,instPozPare);
-<<<<<<< HEAD
-        int [][] reaz = problem.BKT_with_FC_MRV(s);
+        int [][] reaz = problem.BKT_with_FC(s);
         for(int i=0; i<9; i++) {
             for (int j = 0; j < 9; j++) {
                 System.out.print(reaz[i][j] + " ");
             }
             System.out.println();
         }
-=======
-        System.out.println(problem.BKT_with_FC(s));
->>>>>>> origin/main
-
-
     }
 }

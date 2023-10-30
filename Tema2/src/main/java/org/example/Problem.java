@@ -105,14 +105,13 @@ public class Problem {
         return null;
     }
 
-<<<<<<< HEAD
     private Pair<Integer, Integer> next_unasigned_var_MRV(int[][] table, List<Integer>[][] domenii) {
         int min = 10;
         Pair<Integer, Integer> poz = null;
-        for(int i=0; i<9; i++) {
+        for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
                 if (table[i][j] == 0) {
-                    if(domenii[i][j].size() < min) {
+                    if (domenii[i][j].size() < min) {
                         min = domenii[i][j].size();
                         poz = new Pair<>(i, j);
                     }
@@ -123,37 +122,27 @@ public class Problem {
         return poz;
     }
 
-    public boolean isEmpty(List<Integer>[][] l, int [][] asigment) {
+    public boolean isEmpty(List<Integer>[][] l, int[][] asigment) {
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
                 if (l[i][j].isEmpty()) {
-                    if(asigment[i][j] == 0)
+                    if (asigment[i][j] == 0)
                         return true;
-=======
-    public boolean isEmpty(List<Integer>[][] l){
-        for(int i=0;i<9;i++){
-            for(int j=0;j<9;j++){
-                if(l[i][j].isEmpty()){
-                    return true;
->>>>>>> origin/main
                 }
             }
         }
         return false;
     }
 
+
     public int[][] BKT_with_FC(Sudoku sudoku) {
-<<<<<<< HEAD
         int[][] sud = sudoku.getTable();
         int[][] assigment = new int[9][9];
-        for(int i = 0; i < 9; i++){
-            for(int j = 0; j < 9; j++)
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++)
                 assigment[i][j] = sud[i][j];
         }
 
-=======
-        int[][] assigment = sudoku.getTable();
->>>>>>> origin/main
         List<Integer>[][] domenii = sudoku.getDomeniu();
         int[][] result = new int[9][9];
 
@@ -164,7 +153,7 @@ public class Problem {
         Pair<Integer, Integer> crtPoz = next_unasigned_var(assigment);
         int x = crtPoz.getValue0();
         int y = crtPoz.getValue1();
-<<<<<<< HEAD
+
         for (var value : domenii[x][y]) {
             if (consistent(assigment, crtPoz, value)) {
                 assigment[x][y] = value;
@@ -185,8 +174,8 @@ public class Problem {
     public int[][] BKT_with_FC_MRV(Sudoku sudoku) {
         int[][] sud = sudoku.getTable();
         int[][] assigment = new int[9][9];
-        for(int i = 0; i < 9; i++){
-            for(int j = 0; j < 9; j++)
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++)
                 assigment[i][j] = sud[i][j];
         }
 
@@ -211,22 +200,6 @@ public class Problem {
                         return result;
                     }
                 }
-
-=======
-        if(assigment[x][y] == 0) {
-            for (var value : domenii[x][y]) {
-                if (consistent(assigment, crtPoz, value)) {
-                    assigment[x][y] = value;
-                    Sudoku s = new Sudoku(assigment, sudoku.getPozPare());
-                    List<Integer>[][] new_domains = s.getDomeniu();
-                    if (!isEmpty(new_domains)) {
-                        result = BKT_with_FC(s);
-                        if (result != null) {
-                            return result;
-                        }
-                    }
-                }
->>>>>>> origin/main
             }
         }
         return null;
