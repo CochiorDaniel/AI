@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-       int [][] instTable = {{1,0,3,4,5,0,0,0,0},
+       int [][] instTable = {{0,0,3,4,5,0,0,0,0},
                              {0,8,0,0,7,0,0,2,0},
                              {7,0,0,0,0,1,5,0,0},
                              {0,0,0,0,6,0,0,0,0},
@@ -29,10 +29,10 @@ public class Main {
 
         Problem problem=new Problem();
         Sudoku s = problem.initialize(instTable,instPozPare);
-        int [][] reaz = problem.BKT_with_FC(s);
+        int [][] rez = problem.BKT_with_FC_MRV(s);
         for(int i=0; i<9; i++) {
             for (int j = 0; j < 9; j++) {
-                System.out.print(reaz[i][j] + " ");
+                System.out.print(rez[i][j] + " ");
             }
             System.out.println();
         }

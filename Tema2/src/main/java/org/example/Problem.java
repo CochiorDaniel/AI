@@ -157,7 +157,9 @@ public class Problem {
             if (consistent(assigment, crtPoz, value)) {
                 assigment[x][y] = value;
                 Sudoku s = new Sudoku(assigment, sudoku.getPozPare());
+                s.setDomeniu(x, y);
                 List<Integer>[][] new_domains = s.getDomeniu();
+                //System.out.println(new_domains[x][y]);
                 if (!isEmpty(new_domains, assigment)) {
                     result = BKT_with_FC(s);
                     if (result != null) {
@@ -192,6 +194,7 @@ public class Problem {
             if (consistent(assigment, crtPoz, value)) {
                 assigment[x][y] = value;
                 Sudoku s = new Sudoku(assigment, sudoku.getPozPare());
+                s.setDomeniu(x,y);
                 List<Integer>[][] new_domains = s.getDomeniu();
                 if (!isEmpty(new_domains, assigment)) {
                     result = BKT_with_FC_MRV(s);
