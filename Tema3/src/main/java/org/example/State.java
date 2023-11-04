@@ -6,7 +6,7 @@ import java.util.Map;
 public class State {
     private int[][] table = new int[3][3];
     private static int player = 0;
-    private static Map<Integer, Pair<Integer,Integer>> asociere;
+    private static Map<Integer, Pair<Integer,Integer>> asociere = new java.util.HashMap<>();
     static {
         asociere.put(2, new Pair<>(0,0));
         asociere.put(7, new Pair<>(0,1));
@@ -45,5 +45,18 @@ public class State {
 
     public static void changePlayer(){
         player = 1-player; // suspect!
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        for(int i=0;i<3;i++){
+            for(int j=0;j<3;j++){
+                sb.append(table[i][j]);
+                sb.append(" ");
+            }
+            sb.append("\n");
+        }
+        return sb.toString();
     }
 }
