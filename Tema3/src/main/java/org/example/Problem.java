@@ -3,6 +3,7 @@ package org.example;
 import org.javatuples.Pair;
 
 import java.util.Map;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Problem {
@@ -64,6 +65,76 @@ public class Problem {
         return true;
     }
 
+    public int winner(State s) {
+        int[][] table = s.getTable();
+        for (int i = 0; i < 3; i++) {
+            if (table[i][0] == table[i][1] && table[i][1] == table[i][2] && table[i][0] != -1) {
+                if (table[i][0] == 1) {
+                    return 1;
+                } else {
+                    return -1;
+                }
+            }
+            if (table[0][i] == table[1][i] && table[1][i] == table[2][i] && table[0][i] != -1) {
+                if (table[0][i] == 1) {
+                    return 1;
+                } else {
+                    return -1;
+                }
+            }
+        }
+        if (table[0][0] == table[1][1] && table[1][1] == table[2][2] && table[0][0] != -1) {
+            if (table[0][0] == 1) {
+                return 1;
+            } else {
+                return -1;
+            }
+        }
+        if (table[0][2] == table[1][1] && table[1][1] == table[2][0] && table[0][2] != -1) {
+            if (table[0][2] == 1) {
+                return 1;
+            } else {
+                return -1;
+            }
+        }
+        return 0;
+    }
+
+    public Pair<Integer, Integer> blocare(State state,int p) {
+        int[][] table = state.getTable();
+
+        if (table[1][1] == table[2][2] && table[1][1] == p
+                || table[1][0] == table[2][0] && table[1][0] == p
+                || table[0][1] == table[0][2] && table[0][1] == p ) return new Pair<>(0, 0);
+        if (table[0][0] == table[0][2] && table[0][0] == p
+                || table[1][1] == table[2][1] && table[1][1] == p)  return new Pair<>(0, 1);
+        if (table[1][1] == table[2][0] && table[1][1] == p
+                || table[0][0] == table[0][1] && table[0][0] == p
+                || table[1][2] == table[2][2] && table[1][2] == p ) return new Pair<>(0, 2);
+
+        if (table[0][0] == table[2][0] && table[0][0]==p
+                || table[1][1] == table[1][2] && table[1][1] == p) return new Pair<>(1, 0);
+        if (table[0][2] == table[2][0] && table[0][2]==p
+                || table[0][0] == table[2][2] && table[0][0] == p
+                || table[0][1] == table[2][1] && table[0][1] == p
+                || table[1][0] == table[1][2] && table[1][0] == p) return new Pair<>(1, 1);
+        if (table[1][0] == table[1][1] && table[1][0]==p
+                || table[0][2] == table[2][2] && table[0][2]==p) return new Pair<>(1, 2);
+
+
+        if (table[0][2] == table[1][1] && table[0][2]==p
+                || table[0][0] == table[1][0] && table[0][0]==p
+                || table[2][1] == table[2][2]&& table[2][1]==p) return new Pair<>(2, 0);
+        if (table[0][0] == table[1][1] && table[0][0]==p
+                || table[0][2] == table[1][2] && table[0][2]==p
+                || table[2][0] == table[2][1] && table[2][0]==p) return new Pair<>(2, 2);
+        if (table[2][0] == table[2][2] && table[2][0]==p
+                || table[0][1] == table[1][1] && table[0][1]==p) return new Pair<>(2, 1);
+
+
+        return new Pair<>(-1,-1);
+    }
+
     public int heuristic(State state) {
         int[][] table = state.getTable();
         int h = 0, hmin = 100;
@@ -119,7 +190,7 @@ public class Problem {
         //System.out.println(hmin);
         Map<Integer, Pair<Integer, Integer>> asociere = State.getAsociere();
         for (int i = 1; i <= 9; i++) {
-            if (asociere.get(i).getValue0() == poz.getValue0() && asociere.get(i).getValue1() == poz.getValue1()) {
+            if (Objects.equals(asociere.get(i).getValue0(), poz.getValue0()) && Objects.equals(asociere.get(i).getValue1(), poz.getValue1())) {
                 return i;
             }
         }
@@ -128,7 +199,7 @@ public class Problem {
 
     public int MiniMax(State state, int depth, boolean isMaximizing) {
         if (isFinal(state) || depth == 0) {
-            return heuristic(state);
+            return winner(state);
         }
         if (isMaximizing) {
             int bestScore = -1000;
@@ -141,7 +212,7 @@ public class Problem {
             }
             return bestScore;
         } else {
-            int bestScore = 100;
+            int bestScore = 1000;
             for (int i = 1; i <= 9; i++) {
                 if (validateMove(state, i)) {
                     State newState = tranzitie(state, i);
@@ -153,7 +224,7 @@ public class Problem {
         }
     }
 
-    public int gameTime(State state) {
+    public String gameTime(State state) {
         while (!isFinal(state)) {
             int move = 0;
             if (State.getPlayer() == 0) {
@@ -168,10 +239,17 @@ public class Problem {
             }
             System.out.println(state);
         }
-        return 0; //momentat + functie de evaluare
+        int rezultat = winner(state);
+        if (rezultat == 1) {
+            return "Calculatorul a castigat!";
+        } else if (rezultat == -1) {
+            return "Jucatorul a castigat!";
+        } else {
+            return "Remiza!";
+        }
     }
 
-    public int MiniMaxGame(State state) {
+    public String MiniMaxGame(State state) {
         while (!isFinal(state)) {
             int move = 0;
             if (State.getPlayer() == 0) {
@@ -179,21 +257,21 @@ public class Problem {
                 move = scanner.nextInt();
             } else {
                 int bestScore = -1000;
-               for(int i=0;i<3;i++){
-                   for(int j=0;j<3;j++) {
-                        if(state.getTable()[i][j]==-1){
-                           state.getTable()[i][j] = 1;
-                           int score = MiniMax(state, 2, true);
-                           state.getTable()[i][j] = -1;
-                            if(score>bestScore){
-                                 bestScore = score;
+                for (int i = 0; i < 3; i++) {
+                    for (int j = 0; j < 3; j++) {
+                        if (state.getTable()[i][j] == -1) {
+                            state.getTable()[i][j] = 1;
+                            int score = MiniMax(state, 9, true);
+                            state.getTable()[i][j] = -1;
+                            if (score > bestScore) {
+                                bestScore = score;
                                 int finalI = i;
                                 int finalJ = j;
                                 move = State.getAsociere().entrySet().stream().filter(entry -> entry.getValue().getValue0() == finalI && entry.getValue().getValue1() == finalJ).findFirst().get().getKey();
                             }
                         }
-                   }
-               }
+                    }
+                }
 
             }
             if (validateMove(state, move)) {
@@ -202,6 +280,13 @@ public class Problem {
             }
             System.out.println(state);
         }
-        return 0; //momentat + functie de evaluare
+        int rezultat = winner(state);
+        if (rezultat == 1) {
+            return "Calculatorul a castigat!";
+        } else if (rezultat == -1) {
+            return "Jucatorul a castigat!";
+        } else {
+            return "Remiza!";
+        }
     }
 }
