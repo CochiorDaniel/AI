@@ -65,6 +65,13 @@ public class Problem {
         return true;
     }
 
+    private boolean validateMove(State state, Pair<Integer,Integer> pair) {
+        if (state.getTable()[pair.getValue0()][pair.getValue1()] != -1) {
+            return false;
+        }
+        return true;
+    }
+
     public int winner(State s) {
         int[][] table = s.getTable();
         for (int i = 0; i < 3; i++) {
@@ -103,33 +110,51 @@ public class Problem {
     public Pair<Integer, Integer> blocare(State state,int p) {
         int[][] table = state.getTable();
 
-        if (table[1][1] == table[2][2] && table[1][1] == p
-                || table[1][0] == table[2][0] && table[1][0] == p
-                || table[0][1] == table[0][2] && table[0][1] == p ) return new Pair<>(0, 0);
-        if (table[0][0] == table[0][2] && table[0][0] == p
-                || table[1][1] == table[2][1] && table[1][1] == p)  return new Pair<>(0, 1);
-        if (table[1][1] == table[2][0] && table[1][1] == p
-                || table[0][0] == table[0][1] && table[0][0] == p
-                || table[1][2] == table[2][2] && table[1][2] == p ) return new Pair<>(0, 2);
+        if (table[1][1] == table[2][2] && table[1][1] == p && table[1][1] !=-1
+                || table[1][0] == table[2][0] && table[1][0] == p && table[1][0] !=-1
+                || table[0][1] == table[0][2] && table[0][1] == p && table[0][1] !=-1)
+            if(table[0][0]==-1)
+                return new Pair<>(0, 0);
+        if (table[0][0] == table[0][2] && table[0][0] == p && table[0][0] !=-1
+                || table[1][1] == table[2][1] && table[1][1] == p && table[1][1] !=-1)
+            if(table[0][1]==-1)
+                return new Pair<>(0, 1);
+        if (table[1][1] == table[2][0] && table[1][1] == p && table[1][1] !=-1
+                || table[0][0] == table[0][1] && table[0][0] == p && table[0][0] !=-1
+                || table[1][2] == table[2][2] && table[1][2] == p && table[1][2] !=-1)
+            if(table[0][2]==-1)
+                return new Pair<>(0, 2);
 
-        if (table[0][0] == table[2][0] && table[0][0]==p
-                || table[1][1] == table[1][2] && table[1][1] == p) return new Pair<>(1, 0);
-        if (table[0][2] == table[2][0] && table[0][2]==p
-                || table[0][0] == table[2][2] && table[0][0] == p
-                || table[0][1] == table[2][1] && table[0][1] == p
-                || table[1][0] == table[1][2] && table[1][0] == p) return new Pair<>(1, 1);
-        if (table[1][0] == table[1][1] && table[1][0]==p
-                || table[0][2] == table[2][2] && table[0][2]==p) return new Pair<>(1, 2);
+        if (table[0][0] == table[2][0] && table[0][0]==p && table[0][0] !=-1
+                || table[1][1] == table[1][2] && table[1][1] == p && table[1][1] !=-1)
+            if(table[1][0]==-1)
+                return new Pair<>(1, 0);
+        if (table[0][2] == table[2][0] && table[0][2]==p && table[0][2] !=-1
+                || table[0][0] == table[2][2] && table[0][0] == p && table[0][0] !=-1
+                || table[0][1] == table[2][1] && table[0][1] == p && table[0][1] !=-1
+                || table[1][0] == table[1][2] && table[1][0] == p && table[1][0] !=-1)
+            if(table[1][1]==-1)
+                return new Pair<>(1, 1);
+        if (table[1][0] == table[1][1] && table[1][0]==p && table[1][0] !=-1
+                || table[0][2] == table[2][2] && table[0][2]==p && table[0][2] !=-1)
+            if(table[1][2]==-1)
+                return new Pair<>(1, 2);
 
 
-        if (table[0][2] == table[1][1] && table[0][2]==p
-                || table[0][0] == table[1][0] && table[0][0]==p
-                || table[2][1] == table[2][2]&& table[2][1]==p) return new Pair<>(2, 0);
-        if (table[0][0] == table[1][1] && table[0][0]==p
-                || table[0][2] == table[1][2] && table[0][2]==p
-                || table[2][0] == table[2][1] && table[2][0]==p) return new Pair<>(2, 2);
-        if (table[2][0] == table[2][2] && table[2][0]==p
-                || table[0][1] == table[1][1] && table[0][1]==p) return new Pair<>(2, 1);
+        if (table[0][2] == table[1][1] && table[0][2]==p && table[0][2] !=-1
+                || table[0][0] == table[1][0] && table[0][0]==p && table[0][0] !=-1
+                || table[2][1] == table[2][2]&& table[2][1]==p && table[2][1] !=-1)
+            if(table[2][0]==-1)
+                return new Pair<>(2, 0);
+        if (table[2][0] == table[2][2] && table[2][0]==p && table[2][0] !=-1
+                || table[0][1] == table[1][1] && table[0][1]==p && table[0][1] !=-1)
+            if(table[2][1]==-1)
+                return new Pair<>(2, 1);
+        if (table[0][0] == table[1][1] && table[0][0]==p && table[0][0] !=-1
+                || table[0][2] == table[1][2] && table[0][2]==p && table[0][2] !=-1
+                || table[2][0] == table[2][1] && table[2][0]==p && table[2][0] !=-1)
+            if(table[2][2]==-1)
+                return new Pair<>(2, 2);
 
 
         return new Pair<>(-1,-1);
@@ -199,7 +224,7 @@ public class Problem {
 
     public int MiniMax(State state, int depth, boolean isMaximizing) {
         if (isFinal(state) || depth == 0) {
-            return winner(state);
+            return heuristic(state);
         }
         if (isMaximizing) {
             int bestScore = -1000;
@@ -232,6 +257,7 @@ public class Problem {
                 move = scanner.nextInt();
             } else {
                 move = heuristic(state);
+                System.out.println("Calculatorul a ales: " + move);
             }
             if (validateMove(state, move)) {
                 state = tranzitie(state, move);
@@ -239,6 +265,7 @@ public class Problem {
             }
             System.out.println(state);
         }
+
         int rezultat = winner(state);
         if (rezultat == 1) {
             return "Calculatorul a castigat!";
