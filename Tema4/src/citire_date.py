@@ -18,10 +18,12 @@ def randomizare_date(lista_date):
     return randomized_list
 
 
-lista_date = citeste_linii_fisier()
-date_randomizate = randomizare_date(lista_date)
+def ret_liste(date_randomizate):
+    date_antrenament = date_randomizate[:168]
+    date_test = date_randomizate[169:]
+    return date_antrenament,date_test
 
-date_antrenament = date_randomizate[:168]
-date_test = date_randomizate[169:]
+
+
 
 

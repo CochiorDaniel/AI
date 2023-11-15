@@ -16,4 +16,7 @@ def mean_squared_error(y_actual, y_predicted):
     return ((y_actual - y_predicted) ** 2).mean()
 
 
-
+def softmax(scores):
+    exp_scores = np.exp(scores)
+    probabilities = exp_scores / np.sum(exp_scores, axis=0)
+    return probabilities
