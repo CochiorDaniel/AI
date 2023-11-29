@@ -24,23 +24,29 @@ class State:
                 self.right = (0, j+1)
             if i-m.harta[i][j] < 0 and j+1 >= 10:
                 self.right = (0, 9)
-            if i-m.harta[i][j] >= 0 and j+1 >= 10:
-                self.up = (i-m.harta[i][j], 9)
+            if i - m.harta[i][j] >= 0 and j + 1 >= 10:
+                self.right = (i - m.harta[i][j], 9)
 
         if i-m.harta[i][j] >= 0 and j-1 >= 0:
             self.left = (i-m.harta[i][j], j-1)
         else:
             if i - m.harta[i][j] < 0 and j - 1 < 0:
-                self.right = (0, 0)
+                self.left = (0, 0)
             if i - m.harta[i][j] < 0 and j - 1 >= 0:
-                self.right = (0, j-1)
-            if i - m.harta[i][j] >= 0 and j - 1 >= 0:
-                self.up = (i - m.harta[i][j], j-1)
+                self.left = (0, j - 1)
+            if i - m.harta[i][j] >= 0 and j - 1 < 0:
+                self.left = (i - m.harta[i][j], j - 1)
+        self.act = dict()
+        if i - 1 >= 0:
+            self.act["up"] = self.up
+        if i + 1 < 7:
+            self.act["down"] = self.down
+        if j - 1 >= 0:
+            self.act["left"] = self.left
+        if j + 1 < 10:
+            self.act["right"] = self.right
 
-        self.act = {"up": self.up, "down": self.down, "right": self.right, "left": self.left}
-
-        if i != 3 and j != 7:
-            self.reward = -1
-        else:
+        if i == 3 and j == 7:
             self.reward = 9999
-
+        else:
+            self.reward = -1

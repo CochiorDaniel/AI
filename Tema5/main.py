@@ -11,3 +11,7 @@ def main():
     q.learn(s)
     for r in q.qmap:
         print(r)
+
+
+if __name__ == '__main__':
+    main()
