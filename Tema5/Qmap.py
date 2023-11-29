@@ -1,7 +1,6 @@
 import numpy as np
 import state
 
-
 actiuni = ["up", "down", "right", "left"]
 
 
@@ -12,14 +11,19 @@ class Qmap:
         self.discount_factor = 0.1
         self.nr_episoade = 100
 
-    def learn(self):
+    def learn(self, s):
         while self.nr_episoade:
-            s = state.State(i=3, j=0)
             while s.cell != (3, 7):
                 maxim = -9999
+                directie = ""
+                state2 = s
                 for a in actiuni:
                     next_pos = s.act[a]
                     reward = state.State(next_pos[0], next_pos[1]).reward
-
-
-
+                    if reward >= maxim:
+                        maxim = reward
+                        state2 = state.State(i=next_pos[0], j=next_pos[1])
+                        directie = a
+                self.qmap[state2.cell[0]][state2.cell[1]][directie] += self.learning_rate * (
+                        maxim + self.discount_factor * self.learn(state2) -
+                        self.qmap[state2.cell[0]][state2.cell[1]][directie])
