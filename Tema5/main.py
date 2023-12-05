@@ -7,6 +7,7 @@ def main():
     s = state.State(3, 0)
     q.learn(s)
     print(q.qmap)
+    q.print_policy()
 
 
 if __name__ == '__main__':

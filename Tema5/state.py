@@ -47,6 +47,6 @@ class State:
             self.act["right"] = self.right
 
         if i == 3 and j == 7:
-            self.reward = 9999
+            self.reward = 999999
         else:
             self.reward = -1
