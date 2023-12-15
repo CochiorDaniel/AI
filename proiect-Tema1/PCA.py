@@ -9,8 +9,11 @@ def contine_caracter_non_numeric(sir):
 
 file_path = './dataset.csv'
 data = pd.read_csv(file_path)
+
 for column in data.columns:
     print(column)
+    if column == "Telephone Number":
+        continue
     try:
         numeric_values = pd.to_numeric(data[column], errors='coerce')
         ok = 1
@@ -20,20 +23,22 @@ for column in data.columns:
                 ok = 0
                 break
         if ok == 1:
-            mean_value = numeric_values.mean()
-            print("Mean =", mean_value)
+            # checking shape
+            print('Original Dataframe shape :', data.shape)
 
-            median_value = numeric_values.median()
-            print("Median =", median_value)
+            # Input features
+            X = numeric_values
 
-            plt.figure(figsize=(10, 6))
-            plt.hist(numeric_values, bins=20, color='blue', alpha=0.7)
-            plt.title(f'{column}')
-            plt.xlabel(column)
-            plt.ylabel('Frequency')
+            # Mean
+            X_mean = X.mean()
+
+            # Standard deviation
+            X_std = X.std()
+
+            # Standardization
+            Z = (X - X_mean) / X_std
         else:
             print("Column does not contain numeric values")
 
     except ValueError:
         print("Conversion to numeric failed for column")
-# plt.show()
