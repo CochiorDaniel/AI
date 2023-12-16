@@ -16,7 +16,6 @@ for column in data.columns:
         ok = 1
         for el in data[column]:
             if contine_caracter_non_numeric(el):
-                # print(el)
                 ok = 0
                 break
         if ok == 1:
@@ -36,4 +35,4 @@ for column in data.columns:
 
     except ValueError:
         print("Conversion to numeric failed for column")
-# plt.show()
+plt.show()

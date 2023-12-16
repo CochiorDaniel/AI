@@ -1,7 +1,8 @@
 import pandas as pd
-import matplotlib.pyplot as plt
 import re
-import numpy as np
+from sklearn.decomposition import PCA
+from sklearn.preprocessing import StandardScaler
+
 
 def contine_caracter_non_numeric(sir):
     return bool(re.search(r'[^0-9\.,-]', str(sir)))
@@ -9,9 +10,9 @@ def contine_caracter_non_numeric(sir):
 
 file_path = './dataset.csv'
 data = pd.read_csv(file_path)
+print('Original Dataframe shape :', data.shape)
 
 for column in data.columns:
-    print(column)
     if column == "Telephone Number":
         continue
     try:
@@ -19,35 +20,36 @@ for column in data.columns:
         ok = 1
         for el in data[column]:
             if contine_caracter_non_numeric(el):
-                # print(el)
                 ok = 0
                 break
-        if ok == 1:
-            # checking shape
-            print('Original Dataframe shape :', data.shape)
-
-            # Input features
-            X = numeric_values
-
-            # Mean
-            X_mean = X.mean()
-
-            # Standard deviation
-            X_std = X.std()
-
-            # Standardization
-            Z = (X - X_mean) / X_std
-
-            # covariance
-            c = Z.cov(numeric_values)
-
-            eigenvalues, eigenvectors = np.linalg.eigh(c)
-            # print('Eigen values:\n', eigenvalues)
-            # print('Eigen values Shape:', eigenvalues.shape)
-            # print('Eigen Vector Shape:', eigenvectors.shape)
-
-        else:
-            print("Column does not contain numeric values")
+        if ok == 0:
+            del data[column]
 
     except ValueError:
         print("Conversion to numeric failed for column")
+
+print('Dataframe shape after removing non-numeric columns:', data.shape)
+
+data_numeric = data.apply(pd.to_numeric, errors='coerce')
+data_numeric = data_numeric.dropna()
+
+scaler = StandardScaler()
+Z = scaler.fit_transform(data_numeric)
+
+pca = PCA()
+principal_components = pca.fit_transform(Z)
+
+explained_variance_ratio = pca.explained_variance_ratio_
+print("Explained Variance Ratio:", explained_variance_ratio)
+
+num_components = 2
+selected_components = principal_components[:, :num_components]
+
+df_pca = pd.DataFrame(data=selected_components, columns=[f"PC{i + 1}" for i in range(num_components)])
+
+result_df = pd.concat([data_numeric, df_pca], axis=1)
+
+print("PCA Dataframe shape:", result_df.shape)
+
+print("PC1: ", result_df['PC1'])
+print("PC2: ", result_df['PC2'])
