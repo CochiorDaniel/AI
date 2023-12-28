@@ -1,0 +1,505 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome/"
+     xml:base="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:boli_si_simptome="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#hasAffectedPart -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#hasAffectedPart">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#Symptom"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#AffectedPart"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#hasDiseaseName -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#hasDiseaseName">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#Symptom"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#Disease"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#hasIntensity -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#hasIntensity">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#Symptom"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#Intensity"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#anatomicalRegion -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#anatomicalRegion">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#Symptom"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#borderColor -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#borderColor">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#Symptom"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#color -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#color">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#Symptom"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#pattern -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#pattern">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#Symptom"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#shape -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#shape">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#Symptom"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#texture -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#texture">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#Symptom"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#AffectedPart -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#AffectedPart"/>
+    
+
+
+    <!-- http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#Disease -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#Disease"/>
+    
+
+
+    <!-- http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#Intensity -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#Intensity"/>
+    
+
+
+    <!-- http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#Symptom -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#Symptom"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#AllIntensities -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#AllIntensities">
+        <rdf:type rdf:resource="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#Intensity"/>
+        <boli_si_simptome:pattern>blotchy</boli_si_simptome:pattern>
+        <boli_si_simptome:shape>irregular</boli_si_simptome:shape>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#EarlyBlight -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#EarlyBlight">
+        <rdf:type rdf:resource="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#Disease"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#Fruit -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#Fruit">
+        <rdf:type rdf:resource="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#AffectedPart"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#GrayMold -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#GrayMold">
+        <rdf:type rdf:resource="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#Disease"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#LateBlight -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#LateBlight">
+        <rdf:type rdf:resource="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#Disease"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#Leaf -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#Leaf">
+        <rdf:type rdf:resource="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#AffectedPart"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#LeafMold -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#LeafMold">
+        <rdf:type rdf:resource="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#Disease"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#PowderyMilldew -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#PowderyMilldew">
+        <rdf:type rdf:resource="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#Disease"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#SevereToFatal -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#SevereToFatal">
+        <rdf:type rdf:resource="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#Intensity"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#Stem -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#Stem">
+        <rdf:type rdf:resource="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#AffectedPart"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#Strong -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#Strong">
+        <rdf:type rdf:resource="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#Intensity"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#StrongToFatal -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#StrongToFatal">
+        <rdf:type rdf:resource="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#Intensity"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#WeakToModerate -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#WeakToModerate">
+        <rdf:type rdf:resource="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#Intensity"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#instanta1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#instanta1">
+        <boli_si_simptome:hasAffectedPart rdf:resource="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#Leaf"/>
+        <boli_si_simptome:hasDiseaseName rdf:resource="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#LateBlight"/>
+        <boli_si_simptome:hasIntensity rdf:resource="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#WeakToModerate"/>
+        <boli_si_simptome:anatomicalRegion>apicalSuperiorRegion</boli_si_simptome:anatomicalRegion>
+        <boli_si_simptome:color>lightGreen</boli_si_simptome:color>
+        <boli_si_simptome:pattern>blotchy</boli_si_simptome:pattern>
+        <boli_si_simptome:shape>irregular</boli_si_simptome:shape>
+        <boli_si_simptome:texture>damp</boli_si_simptome:texture>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#instanta10 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#instanta10">
+        <boli_si_simptome:hasAffectedPart rdf:resource="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#Leaf"/>
+        <boli_si_simptome:hasDiseaseName rdf:resource="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#PowderyMilldew"/>
+        <boli_si_simptome:hasIntensity rdf:resource="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#AllIntensities"/>
+        <boli_si_simptome:color>yellowWhite</boli_si_simptome:color>
+        <boli_si_simptome:pattern>blotchy</boli_si_simptome:pattern>
+        <boli_si_simptome:texture>chalky</boli_si_simptome:texture>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#instanta11 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#instanta11">
+        <boli_si_simptome:hasAffectedPart rdf:resource="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#Leaf"/>
+        <boli_si_simptome:hasDiseaseName rdf:resource="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#GrayMold"/>
+        <boli_si_simptome:hasIntensity rdf:resource="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#AllIntensities"/>
+        <boli_si_simptome:anatomicalRegion>apicalSuperiorRegion</boli_si_simptome:anatomicalRegion>
+        <boli_si_simptome:color>greenGrey</boli_si_simptome:color>
+        <boli_si_simptome:pattern>blotchy</boli_si_simptome:pattern>
+        <boli_si_simptome:shape>vShape</boli_si_simptome:shape>
+        <boli_si_simptome:texture>chalky</boli_si_simptome:texture>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#instanta12 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#instanta12">
+        <boli_si_simptome:hasAffectedPart rdf:resource="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#Stem"/>
+        <boli_si_simptome:hasDiseaseName rdf:resource="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#GrayMold"/>
+        <boli_si_simptome:hasIntensity rdf:resource="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#AllIntensities"/>
+        <boli_si_simptome:color>greenGrey</boli_si_simptome:color>
+        <boli_si_simptome:pattern>blotchy</boli_si_simptome:pattern>
+        <boli_si_simptome:shape>elliptic</boli_si_simptome:shape>
+        <boli_si_simptome:texture>wilted</boli_si_simptome:texture>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#instanta13 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#instanta13">
+        <boli_si_simptome:hasAffectedPart rdf:resource="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#Fruit"/>
+        <boli_si_simptome:hasDiseaseName rdf:resource="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#GrayMold"/>
+        <boli_si_simptome:hasIntensity rdf:resource="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#WeakToModerate"/>
+        <boli_si_simptome:color>white</boli_si_simptome:color>
+        <boli_si_simptome:pattern>spotted</boli_si_simptome:pattern>
+        <boli_si_simptome:shape>ringShape</boli_si_simptome:shape>
+        <boli_si_simptome:texture>smooth</boli_si_simptome:texture>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#instanta14 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#instanta14">
+        <boli_si_simptome:hasAffectedPart rdf:resource="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#Fruit"/>
+        <boli_si_simptome:hasDiseaseName rdf:resource="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#GrayMold"/>
+        <boli_si_simptome:hasIntensity rdf:resource="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#StrongToFatal"/>
+        <boli_si_simptome:anatomicalRegion>basalToCentralRegion</boli_si_simptome:anatomicalRegion>
+        <boli_si_simptome:color>darkGrey</boli_si_simptome:color>
+        <boli_si_simptome:pattern>blotchy</boli_si_simptome:pattern>
+        <boli_si_simptome:shape>irregular</boli_si_simptome:shape>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#instanta15 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#instanta15">
+        <boli_si_simptome:hasAffectedPart rdf:resource="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#Leaf"/>
+        <boli_si_simptome:hasDiseaseName rdf:resource="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#LeafMold"/>
+        <boli_si_simptome:hasIntensity rdf:resource="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#AllIntensities"/>
+        <boli_si_simptome:anatomicalRegion>superiorSide</boli_si_simptome:anatomicalRegion>
+        <boli_si_simptome:color>yellow</boli_si_simptome:color>
+        <boli_si_simptome:pattern>blotchy</boli_si_simptome:pattern>
+        <boli_si_simptome:shape>irregular</boli_si_simptome:shape>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#instanta16 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#instanta16">
+        <boli_si_simptome:hasAffectedPart rdf:resource="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#Leaf"/>
+        <boli_si_simptome:hasDiseaseName rdf:resource="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#LeafMold"/>
+        <boli_si_simptome:hasIntensity rdf:resource="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#AllIntensities"/>
+        <boli_si_simptome:anatomicalRegion>inferiorSide</boli_si_simptome:anatomicalRegion>
+        <boli_si_simptome:color>yellowBrown</boli_si_simptome:color>
+        <boli_si_simptome:pattern>blotchy</boli_si_simptome:pattern>
+        <boli_si_simptome:shape>irregular</boli_si_simptome:shape>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#instanta2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#instanta2">
+        <boli_si_simptome:hasAffectedPart rdf:resource="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#Leaf"/>
+        <boli_si_simptome:hasDiseaseName rdf:resource="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#LateBlight"/>
+        <boli_si_simptome:hasIntensity rdf:resource="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#Strong"/>
+        <boli_si_simptome:anatomicalRegion>superiorSide</boli_si_simptome:anatomicalRegion>
+        <boli_si_simptome:borderColor>lightGreen</boli_si_simptome:borderColor>
+        <boli_si_simptome:color>brown</boli_si_simptome:color>
+        <boli_si_simptome:pattern>blotchy</boli_si_simptome:pattern>
+        <boli_si_simptome:shape>irregular</boli_si_simptome:shape>
+        <boli_si_simptome:texture>dampAndWrinkled</boli_si_simptome:texture>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#instanta3 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#instanta3">
+        <boli_si_simptome:hasAffectedPart rdf:resource="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#Leaf"/>
+        <boli_si_simptome:hasDiseaseName rdf:resource="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#LateBlight"/>
+        <boli_si_simptome:hasIntensity rdf:resource="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#SevereToFatal"/>
+        <boli_si_simptome:anatomicalRegion>superiorSide</boli_si_simptome:anatomicalRegion>
+        <boli_si_simptome:borderColor>greenBrown</boli_si_simptome:borderColor>
+        <boli_si_simptome:color>purpleBrown</boli_si_simptome:color>
+        <boli_si_simptome:pattern>blotchy</boli_si_simptome:pattern>
+        <boli_si_simptome:shape>irregular</boli_si_simptome:shape>
+        <boli_si_simptome:texture>dampAndWrinkled</boli_si_simptome:texture>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#instanta4 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#instanta4">
+        <boli_si_simptome:hasAffectedPart rdf:resource="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#Stem"/>
+        <boli_si_simptome:hasDiseaseName rdf:resource="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#LateBlight"/>
+        <boli_si_simptome:hasIntensity rdf:resource="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#StrongToFatal"/>
+        <boli_si_simptome:color>darkBrown</boli_si_simptome:color>
+        <boli_si_simptome:pattern>blotchy</boli_si_simptome:pattern>
+        <boli_si_simptome:shape>irregular</boli_si_simptome:shape>
+        <boli_si_simptome:texture>damp</boli_si_simptome:texture>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#instanta5 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#instanta5">
+        <boli_si_simptome:hasAffectedPart rdf:resource="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#Fruit"/>
+        <boli_si_simptome:hasDiseaseName rdf:resource="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#LateBlight"/>
+        <boli_si_simptome:hasIntensity rdf:resource="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#SevereToFatal"/>
+        <boli_si_simptome:anatomicalRegion>basalToCentralRegion</boli_si_simptome:anatomicalRegion>
+        <boli_si_simptome:borderColor>darkRedBrown</boli_si_simptome:borderColor>
+        <boli_si_simptome:color>darkRedBrown</boli_si_simptome:color>
+        <boli_si_simptome:pattern>blotchy</boli_si_simptome:pattern>
+        <boli_si_simptome:shape>irregular</boli_si_simptome:shape>
+        <boli_si_simptome:texture>dryAndRough</boli_si_simptome:texture>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#instanta6 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#instanta6">
+        <boli_si_simptome:hasAffectedPart rdf:resource="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#Leaf"/>
+        <boli_si_simptome:hasDiseaseName rdf:resource="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#EarlyBlight"/>
+        <boli_si_simptome:hasIntensity rdf:resource="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#WeakToModerate"/>
+        <boli_si_simptome:borderColor>yellowGreen</boli_si_simptome:borderColor>
+        <boli_si_simptome:color>yellowGreen</boli_si_simptome:color>
+        <boli_si_simptome:pattern>spotted</boli_si_simptome:pattern>
+        <boli_si_simptome:shape>circular</boli_si_simptome:shape>
+        <boli_si_simptome:texture>damp</boli_si_simptome:texture>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#instanta7 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#instanta7">
+        <boli_si_simptome:hasAffectedPart rdf:resource="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#Leaf"/>
+        <boli_si_simptome:hasDiseaseName rdf:resource="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#EarlyBlight"/>
+        <boli_si_simptome:hasIntensity rdf:resource="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#StrongToFatal"/>
+        <boli_si_simptome:borderColor>yellow</boli_si_simptome:borderColor>
+        <boli_si_simptome:color>yellow</boli_si_simptome:color>
+        <boli_si_simptome:pattern>spotted</boli_si_simptome:pattern>
+        <boli_si_simptome:shape>circular</boli_si_simptome:shape>
+        <boli_si_simptome:texture>damp</boli_si_simptome:texture>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#instanta8 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#instanta8">
+        <boli_si_simptome:hasAffectedPart rdf:resource="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#Stem"/>
+        <boli_si_simptome:hasDiseaseName rdf:resource="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#EarlyBlight"/>
+        <boli_si_simptome:hasIntensity rdf:resource="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#StrongToFatal"/>
+        <boli_si_simptome:color>black</boli_si_simptome:color>
+        <boli_si_simptome:pattern>blotchy</boli_si_simptome:pattern>
+        <boli_si_simptome:shape>elliptic</boli_si_simptome:shape>
+        <boli_si_simptome:texture>damp</boli_si_simptome:texture>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#instanta9 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#instanta9">
+        <boli_si_simptome:hasAffectedPart rdf:resource="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#Fruit"/>
+        <boli_si_simptome:hasDiseaseName rdf:resource="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#EarlyBlight"/>
+        <boli_si_simptome:hasIntensity rdf:resource="http://www.semanticweb.org/claudia/ontologies/2023/11/boli_si_simptome#SevereToFatal"/>
+        <boli_si_simptome:anatomicalRegion>basalToCentralRegion</boli_si_simptome:anatomicalRegion>
+        <boli_si_simptome:color>darkBrown</boli_si_simptome:color>
+        <boli_si_simptome:pattern>blotchy</boli_si_simptome:pattern>
+        <boli_si_simptome:shape>ringShape</boli_si_simptome:shape>
+        <boli_si_simptome:texture>dryAndRough</boli_si_simptome:texture>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.26.2023-07-17T20:34:13Z) https://github.com/owlcs/owlapi -->
+
